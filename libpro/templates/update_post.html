@@ -1,0 +1,29 @@
+{% extends 'base.html'%}
+
+{% block title %}
+    Edit Post
+{% endblock %}
+
+{% block content %}
+
+
+{% if user.is_authenticated %}
+    <h1>Update Post</h1>
+    <br /><br />
+    <div class="form-group">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-success">Update</button>
+        <a href="{% url 'home' %}" class="btn btn-danger">Back</a>
+    </div>
+{% else %}
+
+You are not logged in. Please log in to update your post.
+
+{% endif %}
+
+
+
+
+{% endblock %}

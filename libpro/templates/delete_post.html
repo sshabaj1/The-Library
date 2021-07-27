@@ -1,0 +1,36 @@
+{% extends 'base.html'%}
+
+{% block title %}
+    Delete Post
+{% endblock %}
+
+{% block content %}
+
+
+
+<h1>Delete Post</h1>
+<br /><br />
+<h3>Delete {{ post.title }}</h3>
+
+
+{% if user.is_authenticated %}
+
+    <div class="form-group">
+        <form method="POST">
+            {% csrf_token %}
+            <strong>Are you sure you want to delete the post?</strong><br/><br />
+            <button class="btn btn-danger">Delete Post</button>
+            {{ form.as_p }}
+        
+            <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+    </div>
+{% else %}
+
+You are not logged in. Please log in to delete your post.
+
+{% endif %}
+
+
+
+
+{% endblock %}
