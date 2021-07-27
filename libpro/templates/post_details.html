@@ -17,7 +17,7 @@
     {% endif %}
 </small><br/>
 <br/>
-{{ post.body }}
+{{ post.body|safe }}
 
 <br/><br/>
 <a href="{% url 'home' %}" class="btn btn-danger">Back</a>
