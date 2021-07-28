@@ -14,16 +14,20 @@
 
 
 {% if user.is_authenticated %}
+    {% if user.id == post.author.id %}
 
-    <div class="form-group">
-        <form method="POST">
-            {% csrf_token %}
-            <strong>Are you sure you want to delete the post?</strong><br/><br />
-            <button class="btn btn-danger">Delete Post</button>
-            {{ form.as_p }}
-        
-            <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
-    </div>
+        <div class="form-group">
+            <form method="POST">
+                {% csrf_token %}
+                <strong>Are you sure you want to delete the post?</strong><br/><br />
+                <button class="btn btn-danger">Delete Post</button>
+                {{ form.as_p }}
+            
+                <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+        </div>
+    {% else %}
+        You can't delete this post
+    {% endif %}
 {% else %}
 
 You are not logged in. Please log in to delete your post.
