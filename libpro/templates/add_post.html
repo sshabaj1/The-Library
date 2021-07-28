@@ -17,6 +17,14 @@
         <button class="btn btn-success">Post</button>
         <a href="{% url 'home' %}" class="btn btn-danger">Back</a>
     </div>
+
+    <script>
+
+        var name = "{{ user.id }}";
+        document.getElementById('identifier').value = name;
+
+
+    </script>
 {% else %}
 
 You are not logged in. Please log in to add a post.
