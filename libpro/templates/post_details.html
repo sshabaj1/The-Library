@@ -33,7 +33,7 @@ mothod="POST">
     {% csrf_token %}
 
     {% if liked %}
-        <button type="submit", name="post-id", value = "{{ post.id }}" class= "btn btn-danger btn-sm">Unlike</button>
+        <button type="submit" name="post-id" value = "{{ post.id }}" class= "btn btn-danger btn-sm">Unlike</button>
         
     {% else %}
         <button type="submit" name="post-id" value = "{{ post.id }}" class= "btn btn-primary btn-sm">Like</button>
