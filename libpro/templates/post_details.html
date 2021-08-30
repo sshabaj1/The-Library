@@ -1,11 +1,16 @@
 {% extends 'base.html'%}
+
+{% load static %}
+
 {% block title %}
     {{ post.title_tag }}
 {% endblock %}
 
 {% block content %}
 
-
+<style>
+    .user_name_link { text-decoration: none; }
+</style>
 
 <h1>{{ post.title }} - {{ post.author.id }}</h1>
 <small>By: {{ post.author.first_name }}
@@ -48,6 +53,45 @@ mothod="POST">
 {% endif %}
      - {{ total_likes }} Likes
 </form>
+
+
+<br/><br/>
+
+<div class="card mb-3">
+    <div class="row no-gutters">
+      <div class="col-md-2">
+{% if post.author.profile.profile_pic.url %}          
+        <img src="{{ post.author.profile.profile_pic.url }}" class="img-fluid rounded-start" alt="...">
+{% endif %}        
+      </div>
+      <div class="col-md-10">
+        <div class="card-body">
+          <a class='user_name_link' style="color:black"  href='{% url "show_profile_page" post.author.profile.id %}'><h4 class="card-title">{{ post.author.first_name }}
+            {{ post.author.last_name }}</h4>
+
+          <p class='small text-muted'>
+                {% if post.author.profile.website_url %}
+                    <a href ="{{post.author.profile.website_url}}">Website |</a>
+                {% endif%}
+
+                {% if post.author.profile.social_media_url %}
+                    <a href ="{{post.author.profile.social_media_url}}">Social Media |</a>
+                {% endif%}
+
+                {% if post.author.profile.phone_num %}
+                    <a href ="{{post.author.profile.phone_num}}">Phone Number |</a>
+                {% endif%}
+              
+          </p>  
+          <p class="card-text">{{post.author.profile.bio}}</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
 
 
 

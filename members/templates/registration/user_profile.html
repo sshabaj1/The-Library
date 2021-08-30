@@ -1,0 +1,50 @@
+{% extends 'base.html'%}
+
+{% load static %}
+
+{% block content %}
+
+
+
+<h1>User Profile</h1>
+<br /><br />
+
+
+
+
+<div class="card mb-3">
+    <div class="row no-gutters">
+      <div class="col-md-2">
+{% if page_user.profile_pic %}          
+        <img src="{{ page_user.profile_pic.url }}" class="img-fluid rounded-start" alt="...">
+{% endif %}        
+      </div>
+      <div class="col-md-10">
+        <div class="card-body">
+          <a class='user_name_link' style="color:black"  href='{% url "show_profile_page" page_user.id %}'><h4 class="card-title">{{ page_user.first_name }}
+            {{ page_user.last_name }}</h4>
+
+          <p class='small text-muted'>
+                {% if page_user.website_url %}
+                    <a href ="{{page_user.website_url}}">Website |</a>
+                {% endif%}
+
+                {% if page_user.social_media_url %}
+                    <a href ="{{page_user.social_media_url}}">Social Media |</a>
+                {% endif%}
+
+                {% if page_user.phone_num %}
+                    <a href ="{{page_user.phone_num}}">Phone Number |</a>
+                {% endif%}
+              
+          </p>  
+          <p class="card-text">{{page_user.profile.bio}}</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ 
+
+{% endblock %}
